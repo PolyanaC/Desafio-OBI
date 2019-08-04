@@ -19,6 +19,8 @@ o número de figurinhas já compradas. Cada uma das M linhas seguintes contém u
 Saída
 Seu programa deve produzir uma única linha contendo um inteiro, o número de figurinhas que falta para completar o álbum.
 
+
+
 package desafioAlbum;
 
 import java.util.Arrays;

@@ -18,3 +18,64 @@ o número de figurinhas já compradas. Cada uma das M linhas seguintes contém u
 
 Saída
 Seu programa deve produzir uma única linha contendo um inteiro, o número de figurinhas que falta para completar o álbum.
+
+package desafioAlbum;
+
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
+public class albumCopa {
+
+	public static void main(String[] args) {
+		String var;
+		int numAl, numFigt, comprar;  // Número de espaços no álbum, quantidade de figuras compradas.
+		int cont = 0, faltam=0;       //váriavel usada para contar as figuras e as figuras que faltam.
+		int[] numComp = new int[300]; //Quantidade possível de compra de figurinhas.
+		int[] unicos = new int[numComp.length]; //Utilizado para armazenar os números de figurinhas sem repetição.
+		
+		var= JOptionPane.showInputDialog("Digite o número de figurinhas que cabem no álbum");
+		numAl= Integer.parseInt(var);
+		var=JOptionPane.showInputDialog("Quantas figurinhas você comprou?");
+		numFigt= Integer.parseInt(var);
+		
+		
+		if(numAl<=100 && numAl>0 && numFigt>0 && numFigt <= 300) {
+			
+			for(int i=0; i<numFigt; i++) {
+				var= JOptionPane.showInputDialog("Entre com o número das figurinhas compradas");
+				numComp[i]=Integer.parseInt(var);
+				boolean iguais = false;
+				for(int j=0; j<cont; j++) {
+					if(unicos[j] == numComp[i]) { //Comparação para retirar os números repetidos
+						iguais = true;						
+					}
+					
+				}
+				if(!iguais) {
+					unicos[cont++] = numComp[i];
+				}
+			}
+			unicos =Arrays.copyOf(unicos,cont);
+			
+			for( int i = 0 ; i < unicos.length ; i++ ) {
+				faltam++;
+	            //System.out.print(  unicos[ i ] + " - " ); Mostra o conteúdo do array sem repetição
+	        }
+			System.out.println();
+			comprar= numAl-faltam;
+			System.out.print(comprar); //Quantidade de figuras que falta para completar o álbum
+			
+			
+		}else {
+			
+			JOptionPane.showMessageDialog(null, "O número de figuras não corresponde ao número em mercado");
+		}
+		
+		
+	
+
+	}
+
+}
+
